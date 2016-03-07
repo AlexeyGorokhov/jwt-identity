@@ -1,16 +1,19 @@
 {
   "name": "jwt-identity",
-  "version": "0.1.0",
-  "description": "JSON Web Token Authentication Middleware",
+  "version": "1.0.0",
+  "description": "JSON Web Token Authentication Middleware for Express.js",
   "main": "index.js",
   "scripts": {
     "test": "semistandard && node_modules/.bin/tape tests/*.js | tap-spec"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Alexey Gorokhov",
+    "email": "alexey.gorokhov@icloud.com",
+    "url": ""
+  },
+  "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.15.0",
-    "date-now": "^1.0.1",
     "express": "^4.13.4",
     "morgan": "^1.7.0",
     "proxyquire": "^1.7.4",
@@ -21,6 +24,22 @@
   },
   "dependencies": {
     "jsonwebtoken": "^5.5.4",
+    "date-now": "^1.0.1",
     "moment": "^2.11.1"
+  },
+  "keywords": [
+    "JSON Web Token",
+    "Express middleware",
+    "authorization",
+    "authentication",
+    "user management"
+  ],
+  "homepage": "https://github.com/AlexeyGorokhov/jwt-identity",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexeyGorokhov/jwt-identity"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexeyGorokhov/jwt-identity/issues"
   }
 }
