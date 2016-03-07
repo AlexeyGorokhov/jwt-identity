@@ -1,0 +1,26 @@
+{
+  "name": "jwt-identity",
+  "version": "0.1.0",
+  "description": "JSON Web Token Authentication Middleware",
+  "main": "index.js",
+  "scripts": {
+    "test": "semistandard && node_modules/.bin/tape tests/*.js | tap-spec"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.15.0",
+    "date-now": "^1.0.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "proxyquire": "^1.7.4",
+    "semistandard": "^7.0.4",
+    "sinon": "^1.17.3",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.4.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^5.5.4",
+    "moment": "^2.11.1"
+  }
+}

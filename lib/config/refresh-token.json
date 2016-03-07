@@ -1,0 +1,8 @@
+{
+  "body": {
+    "userId": true,
+    "securityStamp": true
+  },
+  "expiresIn": 30,
+  "autoprolongation": 0
+}

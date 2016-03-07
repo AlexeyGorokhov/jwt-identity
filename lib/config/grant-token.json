@@ -1,0 +1,9 @@
+{
+  "body": {
+    "userId": true,
+    "roles": true,
+    "userName": false
+  },
+  "expiresIn": 30,
+  "autoprolongation": 0
+}
