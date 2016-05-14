@@ -42,7 +42,8 @@ const options = {
     body: {
       userId: true,
       roles: true,
-      userName: false
+      userName: false,
+      uiLang: false
     },
     expiresIn: 30,
     autoprolongation: 10
@@ -159,6 +160,12 @@ Type: `Boolean`
 
 If `true`, the user name claim is included in the `grant_token` body and will be accessible through `req.identity.user.claims.userName`. Defaults to `false`.
 
+###### options.grantToken.body.uiLang
+
+Type: `Boolean`
+
+If `true`, the user's preferred UI language claim is included in the `grant_token` body and will be accessible through `req.identity.user.claims.uiLangs`. Defaults to `false`.
+
 ##### options.grantToken.expiresIn
 
 Type: `Number`
@@ -239,6 +246,7 @@ The function is passed the following parameters:
     * `{String} userId` - user ID
     * `{String} roles` - a comma separated list of user's roles
     * `{String} userName` - user's name
+    * `{String} uiLang` - code of the user's preferred UI language
     * `{string} securityStamp` - current security stamp as provided by the user storage. Optional - it is required only if `options.refreshToken.body.securityStamp` is set to `true`.
 
 #### options.refreshTokenSaver
@@ -283,6 +291,7 @@ The function is passed the following parameters:
     * `{String} userId` - the user's ID
     * `{String} roles` - a comma separated list of user's roles
     * `{String} userName` - the user's name
+    * `{String} uiLang` - code of the user's preferred UI language
     * `{string} securityStamp` - the current security stamp as provided by the user storage.
 
 ### User claims

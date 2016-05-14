@@ -2,7 +2,8 @@
   "body": {
     "userId": true,
     "roles": true,
-    "userName": false
+    "userName": false,
+    "uiLang": false
   },
   "expiresIn": 30,
   "autoprolongation": 0

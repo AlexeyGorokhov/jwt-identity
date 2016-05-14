@@ -12,7 +12,8 @@ const identityOptions = {
     body: {
       userId: true,
       roles: true,
-      userName: true
+      userName: true,
+      uiLang: true
     },
     expiresIn: 3,
     autoprolongation: 1
@@ -33,6 +34,7 @@ const identityOptions = {
         userId: 1,
         roles: 'admin, user',
         userName: 'Alex Gorr',
+        uiLang: 'ru',
         securityStamp: 'security_stamp'
       }
     );
@@ -47,6 +49,7 @@ const identityOptions = {
         userId: 1,
         roles: 'admin, user',
         userName: 'Alex Gorr',
+        uiLang: 'ru',
         securityStamp: 'security_stamp'
       }
     );

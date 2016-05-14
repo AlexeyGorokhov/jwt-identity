@@ -1,10 +1,10 @@
 {
   "name": "jwt-identity",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "JSON Web Token Authentication Middleware for Express.js",
   "main": "index.js",
   "scripts": {
-    "test": "semistandard && node_modules/.bin/tape tests/*.js | tap-spec"
+    "test": "semistandard && node_modules/.bin/tape 'test/**/*.js' | tap-spec"
   },
   "author": {
     "name": "Alexey Gorokhov",
