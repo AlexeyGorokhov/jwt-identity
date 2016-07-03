@@ -1,6 +1,6 @@
 {
   "name": "jwt-identity",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "JSON Web Token Authentication Middleware for Express.js",
   "main": "index.js",
   "scripts": {
@@ -17,15 +17,13 @@
     "express": "^4.13.4",
     "morgan": "^1.7.0",
     "proxyquire": "^1.7.4",
-    "semistandard": "^7.0.4",
+    "semistandard": "^8.0.0",
     "sinon": "^1.17.3",
     "tap-spec": "^4.1.1",
     "tape": "^4.4.0"
   },
   "dependencies": {
-    "jsonwebtoken": "^5.5.4",
-    "date-now": "^1.0.1",
-    "moment": "^2.11.1"
+    "jsonwebtoken": "^7.0.0"
   },
   "keywords": [
     "JSON Web Token",

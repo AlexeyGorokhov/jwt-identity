@@ -1,9 +1,8 @@
 # Change Log
 
-## [1.1.0] - 2016-05-14
+## [2.0.0] - 2016-07-03
 
-New features:
-* Add `uiLang` claim to grant token.
+Complete re-write.
 
 ## [1.0.0] - 2016-03-07
 
