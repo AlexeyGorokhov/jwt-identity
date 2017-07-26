@@ -12,6 +12,8 @@ __Important Notes:__
 
 * Jwt-identity automatically provides for refresh token sliding expiration. While a user is being logged in with the use of a valid refresh token, if the refresh token expiration period has less than 25% time remaining, a new refresh token will be issued.
 
+* Jwt-identity enforces use of the algorithm, provided with configuration options, at token verification. For more information, refer to [Critical vulnerabilities in JSON Web Token libraries](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/).
+
 ## Installation
 
 ```bash
