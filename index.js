@@ -15,7 +15,7 @@ module.exports = function (options) {
 
     req.identity = identity;
     authenticate(req)
-    .then(() => next())
-    .catch(err => next(err));
+      .then(() => next())
+      .catch(err => next(err));
   };
 };

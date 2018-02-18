@@ -1,10 +1,8 @@
 # jwt-identity
 
-[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
-
 JSON Web Token authentication middleware for Express.js
 
-On the background, jwt-identity makes use of [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package for generating and verifying tokens.
+Under the hood, jwt-identity makes use of [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package for generating and verifying tokens.
 
 __Important Notes:__
 
@@ -186,18 +184,23 @@ Properties:
 * `{String} roles` - A comma separated list of user roles;
 * `{Object} claims` - A collection of other user claims derived from the grant token.
 
-### req.identity.logIn()
+
+
+
+### req.identity.logIn([user])
 
 Type: `Function`
 
-The function that is supposed to be used on the log-in endpoint.
+Function that is supposed to be used on the log-in/sign-up endpoint.
 
-The function takes no parameters.
+Parameters:
 
-The function return a Promise/A+ that resolves with an object with following properties:
+* `{Object} [user]` Optional. User data. If provided, the process of logging will use this user data instead of invoking `options.workers.getUser()`. Bypassing user data retrieval might be useful on user sign-up when you want the new user get logged-in immediately but you have distributed storage system with reads on replicas so that immediate retrieval of user data is not guaranteed. The shape of user object is identical to that expected to be returned by `options.workers.getUser()`.
 
-* `{Integer} statusCode` - HTTP response status code:
+Returns: `{Promise<Object>}`. Object props:
+
+* `{Integer} statusCode` HTTP response status code:
   * `200` - The user has successfully been logged in, and a grant token (and optionally a refresh token) is issued;
   * `401` - The log-in failed;
-* `{String | null} grantToken` - Grant token if the log-in succeeded; otherwise `null`;
-* `{String | null} refreshToken` - Refresh token if the log-in succeeded AND either the log-in was initiated by user sending in a valid refresh token that needed sliding prolongation, or the log-in was initiated by user sending in login and password with `rememberMe` flag.
+* `{String|null} grantToken` - Grant token if the log-in succeeded; otherwise `null`;
+* `{String|null} refreshToken` - Refresh token if the log-in succeeded AND either the log-in was initiated by user sending in a valid refresh token that needed sliding prolongation, or the log-in was initiated by user sending in login and password with `rememberMe` flag.

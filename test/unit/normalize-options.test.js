@@ -1,10 +1,10 @@
 'use strict';
 
 const test = require('tape');
-const credentialsDefault = require('../lib/credentials-default');
-const algorithms = require('../lib/algorithms');
+const credentialsDefault = require('../../lib/credentials-default');
+const algorithms = require('../../lib/algorithms');
 
-const self = require('../lib/normalize-options');
+const self = require('../../lib/normalize-options');
 
 /** FAKES **/
 
