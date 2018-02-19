@@ -1,5 +1,9 @@
 # Change Log
 
+## [3.1.0] 2018-02-19
+
+* Add `req.identity.verifyGrantToken()` utility function
+
 ## [3.0.0] 2018-02-16
 
 * Add user optional param to logIn()

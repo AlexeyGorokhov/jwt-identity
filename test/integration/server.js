@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const identity = require('./index.js');
+const CLAIMS = require('./claims');
 
 const identityOptions = {
   credentials: {
@@ -69,6 +70,11 @@ app.get('/private', function (req, res) {
   }
 });
 
+app.post('/verify-grant-token', async function (req, res) {
+  const user = await req.identity.verifyGrantToken(req.body.grantToken);
+  res.status(200).json(user);
+});
+
 // Start server
 const server = http.createServer(app);
 server.listen(7000);
@@ -81,9 +87,6 @@ function getUser (userCredentials) {
     userId: 'd43f0277-36fc-4a1d-849d-1c978ff0ed05',
     roles: 'admin,user',
     securityStamp: 'bob123',
-    claims: {
-      userName: 'Bob Dash',
-      userStatus: 'pro'
-    }
+    claims: CLAIMS
   });
 }

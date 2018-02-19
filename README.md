@@ -197,10 +197,30 @@ Parameters:
 
 * `{Object} [user]` Optional. User data. If provided, the process of logging will use this user data instead of invoking `options.workers.getUser()`. Bypassing user data retrieval might be useful on user sign-up when you want the new user get logged-in immediately but you have distributed storage system with reads on replicas so that immediate retrieval of user data is not guaranteed. The shape of user object is identical to that expected to be returned by `options.workers.getUser()`.
 
-Returns: `{Promise<Object>}`. Object props:
+Returns: `{Promise<Object>}`
 
 * `{Integer} statusCode` HTTP response status code:
   * `200` - The user has successfully been logged in, and a grant token (and optionally a refresh token) is issued;
   * `401` - The log-in failed;
 * `{String|null} grantToken` - Grant token if the log-in succeeded; otherwise `null`;
 * `{String|null} refreshToken` - Refresh token if the log-in succeeded AND either the log-in was initiated by user sending in a valid refresh token that needed sliding prolongation, or the log-in was initiated by user sending in login and password with `rememberMe` flag.
+
+
+
+### req.identity.verifyGrantToken(grantToken)
+
+Type: `Function`
+
+Verify a grant token issued by `req.identity.logIn()`.
+
+Possible use case: Service 1 plays the role of authentication authority in a SOA application. Clients get logged in with credentials or a refresh token in Service 1 and receive grant tokens. Then a client tries to get an authenticated access with that grant token to another Service 2 that is part of your application. Service 2 may verify received grant token in Service 1 and receive user data stored in the token.
+
+Parameters:
+
+* `{String} grantToken` Grant token.
+
+Returns: `{Promise<Object|null>}`
+
+* `{String} id` User ID
+* `{String} roles` Comma separated list of user roles
+* `{Object} claims` Collection of other claims stored in the token

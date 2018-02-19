@@ -1,6 +1,6 @@
 {
   "name": "jwt-identity",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "JSON Web Token Authentication Middleware for Express.js",
   "main": "index.js",
   "engines": {

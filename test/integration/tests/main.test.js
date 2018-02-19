@@ -5,10 +5,31 @@ const request = require('request-promise-native');
 const _ = require('lodash');
 
 const reqOpts = require('../utils/request-opts');
+const CLAIMS = require('../claims');
 
 test('"identity.user" object', async t => {
   try {
-    const opts = { ...reqOpts('/') };
+    const opts = {
+      ...reqOpts('/login'),
+      method: 'POST',
+      body: {
+        login: 'foo',
+        password: 'bar',
+        rememberMe: true
+      }
+    };
+
+    const res = await request(opts);
+
+    const { grantToken } = res.body;
+
+    const checkOpts = {
+      ...reqOpts('/'),
+      headers: {
+        Authorization: `Bearer ${grantToken}`
+      }
+    };
+
     const expectedUserProps = [
       'id',
       'isAuthenticated',
@@ -16,15 +37,15 @@ test('"identity.user" object', async t => {
       'claims'
     ];
 
-    const res = await request(opts);
+    const checkRes = await request(checkOpts);
 
-    const user = res.body;
+    const user = checkRes.body;
     const actualUserProps = Object.keys(user);
     const hasAllProps = actualUserProps.every(prop => expectedUserProps.includes(prop)) &&
       expectedUserProps.every(prop => actualUserProps.includes(prop));
 
     t.equal(
-      res.statusCode,
+      checkRes.statusCode,
       200,
       'recieves 200 OK'
     );
@@ -39,6 +60,12 @@ test('"identity.user" object', async t => {
       hasAllProps,
       true,
       '"user" object has correct set of props'
+    );
+
+    t.deepEqual(
+      user.claims,
+      CLAIMS,
+      'should have correct "claims" collection'
     );
 
     t.end();
@@ -150,6 +177,44 @@ test('log-in with remembering', async t => {
       checkRes.body.grantToken,
       null,
       'should get logged in with refresh token'
+    );
+
+    t.end();
+  } catch (err) {
+    t.end(err);
+  }
+});
+
+test('verify grant token', async t => {
+  try {
+    const opts = {
+      ...reqOpts('/login'),
+      method: 'POST',
+      body: {
+        login: 'foo',
+        password: 'bar',
+        rememberMe: true
+      }
+    };
+
+    const res = await request(opts);
+
+    const { grantToken } = res.body;
+
+    const checkOpts = {
+      ...reqOpts('/verify-grant-token'),
+      method: 'POST',
+      body: {
+        grantToken
+      }
+    };
+
+    const checkRes = await request(checkOpts);
+
+    t.deepEqual(
+      checkRes.body.claims,
+      CLAIMS,
+      'should return correct claims'
     );
 
     t.end();

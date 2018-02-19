@@ -9,6 +9,7 @@ RUN npm install
 COPY ./index.js ./
 COPY ./lib/ ./lib/
 COPY ./test/integration/server.js ./server.js
+COPY ./test/integration/claims.js ./claims.js
 
 EXPOSE 7000
 
